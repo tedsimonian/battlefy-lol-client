@@ -1,6 +1,7 @@
 import React from "react";
-import { getSummoner } from "../api";
+import { getSummoner, getMatches } from "../api";
 import PlayerSearch from "../components/PlayerSearch";
+import MatchList from "../components/MatchList";
 
 const dashStyle = {
   width: "50%",
@@ -16,30 +17,38 @@ const dashStyle = {
 class App extends React.Component {
   // our local state
   state = {
-    player: {}
+    player: {},
+    matches: []
+  };
+
+  getMatchesForPlayer = async (accountID) => {
+    const result = await getMatches(accountID);
+    const matches = result.data.matches;
+    this.setState({ matches });
   };
 
   // handle our search of a summoner (player)
   handleSearch = async (name) => {
     try {
       // initially reset state
-      this.setState({ player: {} });
+      this.setState({ player: {}, matches: [] });
       // start our call to the backend server to fetch summoner details
       const result = await getSummoner(name);
       const player = result.data;
       //set our summoner (player) state
-      this.setState({ player });
+      this.setState({ player }, () => this.getMatchesForPlayer(player.accountId));
     } catch (err) {
       console.log("ERROR: ", err);
     }
   };
 
   render() {
+    const { player, matches } = this.state;
     return (
       <div style={dashStyle}>
         <h1 className="ui center aligned header">League of Legends Stats</h1>
         <PlayerSearch handleSearch={this.handleSearch} />
-        <div>I'm a Match List</div>
+        <MatchList player={player} matches={matches} />
       </div>
     );
   }
