@@ -43,6 +43,7 @@ class App extends React.Component {
   };
 
   render() {
+    // deconstruct our state object to make accessing the data cleaner looking
     const { player, matches } = this.state;
     return (
       <div style={dashStyle}>
