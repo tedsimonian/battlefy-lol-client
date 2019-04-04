@@ -19,7 +19,7 @@ const Search = ({ handleSearch }) => {
         onKeyPress={(e) => {
           // convenience method to allow enter to be used instead of clicking on the search button
           if (e.key === "Enter") {
-            handleSearch();
+            handleSearch(name);
             setName("");
           }
         }}

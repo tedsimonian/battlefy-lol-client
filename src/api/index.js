@@ -11,17 +11,17 @@ export const getMatch = (matchID) => {
 };
 
 export const getChampion = (champID) => {
-  return axios.get(`/player/champ/${champID}`);
+  return axios.get(`/match/champ/${champID}`);
 };
 export const getItem = (itemID) => {
-  return axios.get(`/player/item/${itemID}`);
+  return axios.get(`/match/item/${itemID}`);
 };
 export const getPerk = (perkID) => {
-  return axios.get(`/player/perk/${perkID}`);
+  return axios.get(`/match/perk/${perkID}`);
 };
 export const getPerkPath = (pathID) => {
-  return axios.get(`/player/perkpath/${pathID}`);
+  return axios.get(`/match/perkpath/${pathID}`);
 };
 export const getSummonerSpell = (spellID) => {
-  return axios.get(`/player/spell/${spellID}`);
+  return axios.get(`/match/spell/${spellID}`);
 };
