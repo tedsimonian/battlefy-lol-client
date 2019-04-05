@@ -37,8 +37,8 @@ class App extends React.Component {
       const player = result.data;
       //set our summoner (player) state
       this.setState({ player }, () => this.getMatchesForPlayer(player.accountId));
-    } catch (err) {
-      console.log("ERROR: ", err);
+    } catch (e) {
+      console.log("ERROR: ", e);
     }
   };
 

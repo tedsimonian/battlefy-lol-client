@@ -3,6 +3,7 @@ import { getExtractedMatchDetails } from "../utils";
 import { getMatchById, getSummonerSpellNames, getItemNames, getPerkNames, getChampionById } from "../api/helper";
 import { useDeepCompareEffect } from "../utils/deepcompare";
 import MatchDetails from "./MatchDetails";
+import Segment from "./reusable/Segment";
 
 // Our Match Component
 const Match = ({ player, gameID }) => {
@@ -42,7 +43,8 @@ const Match = ({ player, gameID }) => {
       perkNames={match.perkNames}
     />
   ) : (
-    <div>Loading...</div>
+    // a reusable component, uses Semantic UI segment styling
+    <Segment>Loading...</Segment>
   );
 };
 // a function to fetch our complete match details based on the match game id it was passed.
@@ -57,7 +59,6 @@ const getCompleteMatch = async (player, gameID) => {
     // we now need to do some extra work to get the names associated to the ids we retrieved from the player
     const champResult = await getChampionById(matchDetails.championId);
     const champion = champResult.data;
-    console.log(champion);
     const summonerSpellNames = await getSummonerSpellNames(matchDetails.summonerSpells);
     const itemNames = await getItemNames(matchDetails.items);
     const perkNames = await getPerkNames(matchDetails.summonerPerks);
@@ -74,8 +75,8 @@ const getCompleteMatch = async (player, gameID) => {
       perkNames,
       isLoaded
     };
-  } catch (err) {
-    console.log(err);
+  } catch (e) {
+    console.log(e);
   }
 };
 

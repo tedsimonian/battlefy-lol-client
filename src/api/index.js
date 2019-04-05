@@ -1,5 +1,7 @@
 import axios from "../config/axios";
 
+// all of our front end routes to call our backend server to retrieve specific data based on the route path
+
 export const getSummoner = (name) => {
   return axios.get(`/summoner/${name}`);
 };
