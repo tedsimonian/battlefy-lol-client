@@ -3,6 +3,8 @@ import SegmentGrid from "../reusable/SegmentGrid";
 import RowColumn from "../reusable/RowColumn";
 import Row from "../reusable/Row";
 
+// Section 4 of the Match Details Component.
+// Helps clean up Match Details code
 const Section4 = ({ cpm, tcs, minionKills }) => {
   return (
     <SegmentGrid color="yellow">

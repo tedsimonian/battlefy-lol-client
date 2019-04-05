@@ -2,6 +2,7 @@ import React from "react";
 import { getSummoner, getMatches } from "../api";
 import PlayerSearch from "../components/PlayerSearch";
 import MatchList from "../components/MatchList";
+import ErrorBoundary from "../hoc/ErrorBoundary";
 
 const dashStyle = {
   width: "50%",
@@ -48,8 +49,11 @@ class App extends React.Component {
     return (
       <div style={dashStyle}>
         <h1 className="ui center aligned header">League of Legends Stats</h1>
-        <PlayerSearch handleSearch={this.handleSearch} />
-        <MatchList player={player} matches={matches} />
+        {/* try to catch any errors using the React ErrorBoundary */}
+        <ErrorBoundary>
+          <PlayerSearch handleSearch={this.handleSearch} />
+          <MatchList player={player} matches={matches} />
+        </ErrorBoundary>
       </div>
     );
   }
