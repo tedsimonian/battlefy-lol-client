@@ -45,12 +45,8 @@ export const getMatchById = (gameID) => {
   return getMatch(gameID);
 };
 
-export const getChampionById = async (champID) => {
-  try {
-    return await getChampion(champID);
-  } catch (e) {
-    console.log(e);
-  }
+export const getChampionById = (champID) => {
+  return getChampion(champID);
 };
 
 export const getPerkPathById = (pathID) => {

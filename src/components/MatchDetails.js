@@ -5,18 +5,8 @@ import React from "react";
 const MatchDetails = (props) => {
   // destructure our props for cleaner code use
   const {
-    matchDetails: {
-      outcome,
-      gameDuration,
-      championId,
-      champLevel,
-      kills,
-      deaths,
-      assists,
-      cpm,
-      totalCreepScore,
-      minionKills
-    },
+    matchDetails: { outcome, gameDuration, champLevel, kills, deaths, assists, cpm, totalCreepScore, minionKills },
+    champion,
     summonerSpellNames,
     itemNames,
     perkNames
@@ -52,7 +42,7 @@ const MatchDetails = (props) => {
           <div className="row">
             <h4 className="ui teal header">Champion: </h4>
             <div className="column">
-              <div>{championId}</div>
+              <div>{champion.name}</div>
             </div>
           </div>
           <div className="row">
